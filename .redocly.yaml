@@ -12,7 +12,7 @@ features.openapi:
   disableDeepLinks: true
   nativeScrollbars: false
   sortPropsAlphabetically: false
-  pagination: 'none'
+  pagination: 'section'
   showConsole: true
   showRightPanelToggle: false
   showChangeLayoutButton: false
