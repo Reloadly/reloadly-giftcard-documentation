@@ -1,0 +1,91 @@
+type: array
+items:
+  type: object
+  properties:
+    transactionId:
+      description: This indicates the unique identification number of a gift card transaction.
+      type: integer
+      example: 1
+    amount:
+      description: This indicates the amount deducted for the purchase of the gift card plus fees incurred 
+      type: number
+      example: 60553.3575
+    discount:
+      description: This indicates the discount applied, if there was any - at the point of purchasing the gift card
+      type: number
+      example: 2.00
+    currencyCode:
+      description: This is the currency denomination of the user's account
+      type: string
+      example: NGN
+    fee:
+      description: This indicates the fee applied at the point of purchasing the gift card. This fee is applied in the currency denomination of the user's account.
+      type: number
+      example: 198.35026
+    recipientEmail:
+      description: This indicates the email address of the gift card's recipient.
+      type: string
+      example: anyone@email.com
+    customIdentifier:
+      description: This is a unique reference assigned to the gift card at the point of purchase.
+      type: string
+      example: obucks3
+    status:
+      description: This indicates the status of the transaction.
+      type: string
+      example: SUCCESSFUL
+    product:
+      description: This is an object that contains all the product details of the gift card transaction that was made.
+      type: object
+      properties:
+        productId:
+          description: This indicates the product ID of the gift card.
+          type: integer
+          example: 4
+        productName:
+          description: This indicates the gift card's name.
+          type: string
+          example: Amazon Spain
+        countryCode:
+          description: This indicates the ISO code of the country where the purchased gift card can be used.
+          type: string
+          example: ES
+        quantity:
+          description: This indicates the number of gift cards that were purchased in a single transaction.
+          type: integer
+          example: 5
+        unitPrice:
+          description: This indicates the gift card price.
+          type: number
+          example: 5.00
+        totalPrice:
+          description: This indicates the total price at which the gift cards were purchased.
+          type: number
+          example: 25.00
+        currencyCode:
+          description: This is the currency denomination in which the gift card was purchased.
+          example: EUR
+        brand:
+          description: This is an object that contains all details of the gift card brand(s) purchased.
+          type: object
+          properties:
+            brandId:
+              description: This indicates the identification number of the gift card brand purchased.
+              type: integer
+              example: 2
+            brandName:
+              description: This indicates the name of the gift card brand purchased.
+              type: string
+              example: Amazon
+    smsFee:
+      description: This indicates the email address of the gift card's recipient. This fee is applied in the currency denomination of the user's account.
+      type: number
+      example: 56.91
+    recipientPhone:
+      description: This indcates the mobile number of the recipient.
+      type: string
+      example: "657829900"
+    transactionCreatedTime:
+      description: This indicates the date the transaction was made.
+      type: string
+      example: 2021-07-16 22:40:20

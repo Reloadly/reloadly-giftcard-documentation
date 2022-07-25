@@ -1,0 +1,10 @@
+type: object
+properties:
+  cardNumber:
+    description: This indicates the redeem/activation code of the gift card.
+    type: integer
+    example: 6120200345149064
+  amount:
+    description: This indicates the PIN code of the gift card where applicable.
+    type: integer
+    example: 5821

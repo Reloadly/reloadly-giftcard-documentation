@@ -1,0 +1,123 @@
+type: array
+items:
+  type: object
+  properties:
+    productId:
+      description: This indicates the identification number of the gift card product.
+      type: integer
+      example: 1
+    productName:
+      description: This indicates the gift card's name.
+      type: string
+      example: 1-800-PetSupplies
+    global:
+      description: This indicates if the gift card is global or regional (country-specific).
+      type: boolean
+      example: false
+    senderFee:
+      description: This indicates the fee applied for every gift card purchase. Note that this fee is applied with the user's account currency. Universally, it is a flat fee of  0.5 USD.
+      type: number
+      example: 205.29
+    discountPercentage:
+      description: This indicates the percentage discount available for every purchase of the gift card.
+      type: number
+      example: 7.5
+    denominationType:
+      description: This indicates the price(s) for which the gift card can be purchased. Options are either FIXED or RANGE.
+      type: string
+      example: FIXED
+    recipientCurrencyCode:
+      description: This indicates the currency the gift card product is delivered in.
+      type: string
+      example: USD
+    minRecipientDenomination:
+      description: This indicates the minimum amount for which a gift card can be purchased. It only applies to gift cards that have a denomination type of RANGE.
+      type: number
+      example: 10
+    maxRecipientDenomination:
+      description: This indicates the maximum amount for which a gift card can be purchased. It only applies to gift cards that have a denomination type of RANGE.
+      type: number
+      example: 1000
+    senderCurrencyCode:
+      description: This indicates the currency of the user's account.
+      type: string
+      example: NGN
+    minSenderDenomination:
+      description: This indicates the minimum amount for which a gift card can be purchased in the user's account currency. This only applies to gift cards that have a denomination type of RANGE.
+      type: number
+      example: 10
+    maxSenderDenomination:
+      description: This indicates the maximum amount for which a gift card can be purchased in the user's account currency. This only applies to gift cards that have a denomination type of RANGE
+      type: number
+      example: 1000
+    fixedRecipientDenominations:
+      description: This is an array that contains fixed amounts for which a gift card can be purchased. This only applies to gift cards that have a denomination type of FIXED.
+      type: array
+      items:
+        example:
+          - 25.00
+          - 50.00
+    fixedSenderDenominations:
+      description: This is an array that contains fixed amounts for which a gift card can be purchased in the user's account currency. This only applies to gift cards that have a denomination type of FIXED.
+      type: array
+      items:
+        example:
+          - 10264.50
+          - 20529.00
+    fixedRecipientToSenderDenominationsMap:
+      description: This acts as a conversion map between the gift card's price and the value when converted to the user's account currency. This only applies to gift cards that have a denomination type of FIXED
+      type: array
+      items:  
+        type: object
+        properties:
+          object:
+            example:
+              "25.00": 10264.50
+              "50.00": 20529.00
+    logoUrls:
+      description: This is a URL link to an image of the gift card.
+      type: array
+    brand: 
+      description: This is an object that contains details of the various brands that can be accessed in a gift card product.
+      type: object
+      properties:
+        brandId: 
+          description: This indicates the identification number of a gift card's brand.
+          type: integer
+          example: 1
+        brandName:
+          description: This indicates that name of the gift card's brand.
+          type: string
+          example: "Amazon"
+    country:
+      description: This contains all the details of the country where a gift card can be used. It only applies to gift cards that are not global.
+      type: object
+      properties:
+        isoName:
+          description: This indicates the ISO code of the country where a gift card can be used.
+          type: string
+          example: "US"
+        name:
+          description: This indicates the name of the country where a gift card can be used.
+          type: string 
+          example:  "United States"
+        flagUrl:
+          description: Indicates a URL link to an image of the country's flag.
+          type: string
+          example: https://s3.amazonaws.com/rld-flags/us.svg
+    redeemInstructions:
+      description: Indicates an object that contains instructions for redeeming  a gift card.
+      type: object
+      properties:
+        concise:
+          description: Indicates a set of brief instructions for redeeming a gift card.
+          type: string
+          example: This card is redeemable for merchandise on www.1-800-petsupplies.com
+        verbose:
+          description: Indicates a set of lengthy and more detailed instructions for redeeming a gift card.
+          type: string
+          example: Your acceptance of this eCertificate constitutes your agreement to these terms and conditions. This card is redeemable in U.S. only for merchandise on www.1-800-petsupplies.com . Only two eCertificates are redeemable per order. eCertificates cannot be redeemed for cash, except as required by law. Void if altered or reproduced. This gift card is issued in U.S. funds by Tabcom, LLC. When Redeeming online please be sure to enter the entire gift card number including preceding zeros. The maximum number of eCertificates that can be used for phone is nine. By accepting these Terms and Conditions through your use of this Site, you certify that you reside in the United States and are 18 years of age or older. If you are under the age of 18 but at least 14 years of age you may use this Site only under the supervision of a parent or legal guardian who agrees to be bound by these Terms and Conditions.
+    
+
+
+        

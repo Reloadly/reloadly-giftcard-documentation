@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Discounts
+  summary: Get Discount by Product ID
+  description: Retrieve the discount details of a giftcard product by making a request with the product's identification number. 
+  operationId: giftcards/get-discount-by-product-id
+  parameters:
+    - in: path
+      name: productId
+      description: The product's identification number.
+      required: true
+      schema:
+        type: integer
+        example: 5
+  responses:
+    '200':
+      description: Successfully retrieved discount details of a gift card product.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_discount_by_product_id/GetDiscountByProductIdResponse200.yaml
+          example:
+            product:
+              productId: 28
+              productName: Apple Music 12 month Canada
+              countryCode: CA
+              global: false
+            discountPercentage: 2
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_discount_by_product_id/GetDiscountByProductIdResponse401.yaml
+          example:
+            timeStamp: 2021-02-15 21:14:00
+            message: Full authentication is required to access this resource
+            path: /products/10/discounts
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_discount_by_product_id/GetDiscountByProductIdResponse404.yaml
+          example:
+            timeStamp: 2021-02-11 11:54:00
+            status: 404
+            error: Not found
+            message: No message available
+            path: /product/10/discount
+            errorCode: null
+            infoLink: null
+            details: []

@@ -1,0 +1,60 @@
+get:
+  tags:
+    - Discounts
+  summary: Get Discounts
+  description: Retrieve the details of all available discounts on gift card products that can be purchased on Reloadly.
+  operationId: giftcards/get-all-discounts
+  parameters:
+    - in: query
+      name: size
+      schema:
+        type: integer
+        description: Indicates the number of gift card products offering discounts to be retrieved on a page. Default value is 200.
+        example: 50
+    - in: query
+      name: page
+      schema:
+        type: integer
+        description: Indicates the page of the list of gift card products offering discounts. Default value is 1.
+        example: 2
+  responses:
+    '200':
+      description: Successfully retrieved details of all discounts on gift card products.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_discounts/GetAllDiscountsResponse200.yaml
+          example:
+            - product:
+                productId: 28
+                productName: Apple Music 12 month Canada
+                countryCode: CA
+                global: false
+              discountPercentage: 2
+            - {}
+            - {}
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_discounts/GetAllDiscountsResponse401.yaml
+          example:
+            timeStamp: 2021-06-09 21:14:00
+            message: Full authentication is required to access this resource
+            path: /discounts
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_discounts/GetAllDiscountsResponse404.yaml
+          example:
+            timeStamp: 2021-06-11 11:54:00
+            status: 404
+            error: Not Found
+            message: No message available
+            path: /discount

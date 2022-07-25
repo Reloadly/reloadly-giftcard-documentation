@@ -1,0 +1,85 @@
+post:
+  tags:
+    - Orders
+  summary: Order Gift Card
+  description: Order a gift card product by making a request with its details.
+  operationId: giftcards/order-a-gift-card
+  responses:
+    '200':
+      description: Successfully ordered a gift card.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/order_a_gift_card/OrderAGiftCardResponse200.yaml
+          example:
+            transactionId: 1
+            amount: 34536.21
+            discount: 1709.72
+            currencyCode: NGN
+            fee: 285.00
+            recipientEmail: anyone@email.com
+            customIdentifier: obucks1dime0
+            status: SUCCESSFUL
+            product:
+              productId: 1
+              productName: 1-800-PetSupplies
+              countryCode: PS
+              quantity: 1
+              unitPrice: 59.99
+              totalPrice: 59.99
+              currencyCode: USD
+              brand:
+                brandId: 6
+                brandName: 1-800-PetSupplies
+            smsFee: 56.91
+            recipientPhone: 34657829900
+            transactionCreatedTime: 2022-02-28 13:46:00
+
+    '400':
+      description: Failed because the request was made with an incorrect body parameter.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/order_a_gift_card/OrderAGiftCardResponse400.yaml
+          example:
+            timeStamp: 2021-03-19 21:14:00
+            message: Invalid price, please ensure you selected the right price.
+            path: /orders
+            errorCode: null
+            infoLink: null
+            details: []
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/order_a_gift_card/OrderAGiftCardResponse401.yaml
+          example:
+            timeStamp: 2021-02-15 21:14:00
+            message: Full authentication is required to access this resource
+            path: /orders
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/order_a_gift_card/OrderAGiftCardResponse404.yaml
+          example:
+            timeStamp: 2021-02-11 11:54:00
+            status: 404
+            error: Not found
+            message: No message available
+            path: /order
+            errorCode: null
+            infoLink: null
+            details: []
+  requestBody:
+    description: Payload Description
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/giftcards/order_a_gift_card/OrderAGiftCardRequest.yaml

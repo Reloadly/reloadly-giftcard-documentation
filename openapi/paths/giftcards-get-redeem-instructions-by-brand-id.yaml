@@ -1,0 +1,51 @@
+get:
+  tags:
+    - Redeem Instructions
+  summary: Get Redeem Instructions by Brand ID
+  description: Retrieve the redeem instruction details of a gift card brand by making a request with its brand identification number. 
+  operationId: get-redeem-instructions-by-brand-id
+  parameters:
+    - in: path
+      name: brandId
+      description: The gift card brand's identification number.
+      required: true
+      schema:
+        type: integer
+        example: 4
+  responses:
+    '200':
+      description: Successfully retrieved redeem instruction details of a gift card brand.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_redeem_instructions_by_brand_id/GetRedeemInstructionsByBrandIdResponse200.yaml
+          example:
+          -  brandId: 1
+             brandName: 1-800-PetSupplies
+             concise: This card is redeemable for merchandise on www.1-800-petsupplies.com
+             verbose: Your acceptance of this eCertificate constitutes your agreement to these terms and conditions. This card is redeemable in U.S. only for merchandise on www.1-800-petsupplies.com . Only two eCertificates are redeemable per order. eCertificates cannot be redeemed for cash, except as required by law. Void if altered or reproduced. This gift card is issued in U.S. funds by Tabcom, LLC. When Redeeming online please be sure to enter the entire gift card number including preceding zeros. The maximum number of eCertificates that can be used for phone is nine. By accepting these Terms and Conditions through your use of this Site, you certify that you reside in the United States and are 18 years of age or older. If you are under the age of 18 but at least 14 years of age you may use this Site only under the supervision of a parent or legal guardian who agrees to be bound by these Terms and Conditions.
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_redeem_instructions_by_brand_id/GetRedeemInstructionsByBrandIdResponse401.yaml
+          example:
+            timeStamp: 2021-02-15 21:14:00
+            message: Full authentication is required to access this resource
+            path: /redeem-instructions/1
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_redeem_instructions_by_brand_id/GetRedeemInstructionsByBrandIdResponse404.yaml
+          example:
+            timeStamp: 2021-07-11 11:24:00
+            status: 404
+            error: Not Found
+            message: No message available
+            path: /redeem-instruction/1

@@ -1,0 +1,100 @@
+get:
+  tags:
+    - Products
+  summary: Get Products
+  description: Retrieve the details of every gift card product that can be purchased on Reloadly. Note that a gift card product may have one or more brands attached to it. For example, an Amazon gift card product may have Amazon UK and Amazon US as two brands attached to the Amazon product.
+  operationId: giftcards/get-all-products
+  parameters:
+    - in: query
+      name: productName
+      schema:
+        type: string
+        description: Indicates the name of the gift card product.
+        example: Amazon
+    - in: query
+      name: countryCode
+      schema:
+        type: string
+        description: Indicates the ISO code of the country whose gift card products are to be retrieved.
+        example: US
+    - in: query
+      name: includeRange
+      schema: 
+        type: boolean
+        description: Indicates the list of gift card products with the **denominationType** property specified as **RANGE** are to be retrieved.
+        example: true
+    - in: query
+      name: includeFixed
+      schema: 
+        type: boolean
+        description: Indicates the list of gift card products with the **denominationType** property specified as **FIXED** are to be retrieved.
+        example: true
+      
+  responses:
+    '200':
+      description: Successfully retrieved details of all gift card products.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_products/GetAllProductsResponse200.yaml
+          example:
+            - productId: 1
+              productName: 1-800-PetSupplies
+              global: false
+              senderFee: 205.29
+              discountPercentage: 7.5
+              denominationType: FIXED
+              recipientCurrencyCode: USD
+              minRecipientDenomination: null
+              maxrecipientDenomination: null
+              senderCurrencyCode: NGN
+              minSenderDenomination: null
+              maxSenderDenomination: null
+              fixedRecipientDenominations:
+                - 25.00
+                - 50.00
+              fixedSenderDenominations:
+                - 10264.50
+                - 20529.00
+              fixedRecipientToSenderDenominationsMap:
+                - "25.00": 10264.50
+                - "50.00": 20529.00
+              logoUrls:
+                - https://cdn.reloadly.com/giftcards/5daa2b8b-b1ad-4ca6-a34d-a7ce3c14dfaf.jpg
+              brand:
+                brandId: 1
+                brandName: 1-800-PetSupplies
+              country:
+                isoName: US
+                name: United States
+                flagUrl: https://s3.amazonaws.com/rld-flags/us.svg
+              redeemInstruction:
+                concise: This card is redeemable for merchandise on www.1-800-petsupplies.com
+                verbose: Your acceptance of this eCertificate constitutes your agreement to these terms and conditions. This card is redeemable in U.S. only for merchandise on www.1-800-petsupplies.com . Only two eCertificates are redeemable per order. eCertificates cannot be redeemed for cash, except as required by law. Void if altered or reproduced. This gift card is issued in U.S. funds by Tabcom, LLC. When Redeeming online please be sure to enter the entire gift card number including preceding zeros. The maximum number of eCertificates that can be used for phone is nine. By accepting these Terms and Conditions through your use of this Site, you certify that you reside in the United States and are 18 years of age or older. If you are under the age of 18 but at least 14 years of age you may use this Site only under the supervision of a parent or legal guardian who agrees to be bound by these Terms and Conditions. 
+            - {}
+            - {}
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_products/GetAllProductsResponse401.yaml
+          example:
+            timeStamp: 2021-02-15 21:14:00
+            message: Full authentication is required to access this resource
+            path: /products
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_products/GetAllProductsResponse404.yaml
+          example:
+            timeStamp: 2021-09-11 11:54:00
+            status: 404
+            error: Not Found
+            message: No message available
+            path: /product

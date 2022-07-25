@@ -1,0 +1,76 @@
+get:
+  tags:
+    - Transactions
+  summary: Get Transactions
+  description: Retrieve information on all gift card transactions made on an account.
+  operationId: giftcards/get-all-transactions
+  parameters:
+    - in: query
+      name: startDate
+      schema:
+        type: string
+        description: Indicates the start date for the range of transactions to be retrieved.
+        example: 2021-06-01 10:00:00
+    - in: query
+      name: endDate
+      schema:
+        type: string
+        description: Indicates the end date for the range of transactions to be retrieved.
+        example: 2021-07-20 19:17:02
+  responses:
+    '200':
+      description: Successfully retrieved details of all gift card transactions.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_transactions/GetAllTransactionsResponse200.yaml
+          example:
+            - transactionId: 1
+              amount: 60553.3575
+              discount: 0
+              currencyCode: NGN
+              fee: 198.35026
+              customIdentifier: obucks3
+              status: SUCCESSFUL
+              product:
+                productId: 4
+                productName: Amazon Spain
+                countryCode: ES
+                quantity: 5
+                unitPrice: 25
+                totalPrice: 125
+                currencyCode: EUR
+                brand:
+                  brandId: 2
+                  brandName: Amazon
+              smsFee: 56.91
+              receipientPhone: 34657829900
+              transactionCreatedTime: 2022-02-28 13:46:00
+            - {}
+            - {}
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_transactions/GetAllTransactionsResponse401.yaml
+          example:
+            timeStamp: 2021-07-15 21:14:00
+            message: Full authentication is required to access this resource
+            path: /reports/transactions
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made to an incorrect URL path.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_all_transactions/GetAllTransactionsResponse404.yaml
+          example:
+            timeStamp: 2021-01-11 11:54:00
+            message: Could not retrieve/update resources at the moment, please try again later
+            path: /reports/transaction
+            errorCode: null
+            infoLink: null
+            details: []

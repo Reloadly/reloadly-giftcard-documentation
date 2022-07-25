@@ -1,0 +1,26 @@
+type: object
+properties:
+  timeStamp:
+    description: The exact time the gift card order attempt was made.
+    type: string
+    example: 2022-02-15 21:14:00
+  message:
+    description: The error message returned for the failed request.
+    type: string
+    example: Invalid price. Please ensure you selected the right price.
+  path:
+    description: The URL path which the request was made through.
+    type: string
+    example: /orders
+  errorCode:
+    description: The error code associated with the reason for the failed request.
+    type: string
+    example: 
+  infoLink:
+    description: A link to further information about the error.
+    type: string
+    example: 
+  details: 
+    description: Further details of the error returned for the failed request.
+    type: array
+    example: []

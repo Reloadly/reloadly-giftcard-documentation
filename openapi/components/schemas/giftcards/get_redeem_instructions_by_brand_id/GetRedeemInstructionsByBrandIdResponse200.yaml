@@ -1,0 +1,18 @@
+type: object
+properties:
+  brandId:
+    description: This indicates the identification number of the gift card brand to be redeemed
+    type: integer
+    example: 1
+  brandName:
+    description: This indicates the name of the gift card brand to be redeemed
+    type: string
+    example: 1-800-PetSupplies
+  concise:
+    description: Indicates a set of brief instructions for redeeming a gift card.
+    type: string
+    example: This card is redeemable for merchandise on www.1-800-petsupplies.com
+  verbose:
+    description: Indicates a set of lengthy instructions for redeeming a gift card.
+    type: string
+    example: Your acceptance of this eCertificate constitutes your agreement to these terms and conditions. This card is redeemable in U.S. only for merchandise on www.1-800-petsupplies.com . Only two eCertificates are redeemable per order. eCertificates cannot be redeemed for cash, except as required by law. Void if altered or reproduced. This gift card is issued in U.S. funds by Tabcom, LLC. When Redeeming online please be sure to enter the entire gift card number including preceding zeros. The maximum number of eCertificates that can be used for phone is nine. By accepting these Terms and Conditions through your use of this Site, you certify that you reside in the United States and are 18 years of age or older. If you are under the age of 18 but at least 14 years of age you may use this Site only under the supervision of a parent or legal guardian who agrees to be bound by these Terms and Conditions.

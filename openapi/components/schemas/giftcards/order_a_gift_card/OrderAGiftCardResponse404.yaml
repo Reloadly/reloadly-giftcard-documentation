@@ -1,0 +1,22 @@
+type: object
+properties:
+  timeStamp:
+    description: The exact time the gift card order attempt was made.
+    type: string
+    example: 2021-07-15 16:24:00
+  status:
+    description: The HTTP status code returned after the request was made.
+    type: integer
+    example: 404
+  error:
+    description: The error code received after the request was made.
+    type: string
+    example: 
+  message:
+    description: The error message received after the request was made.
+    type: string
+    example: 
+  path:
+    description: The URL path to which the request was made.
+    type: string
+    example: /order

@@ -1,0 +1,50 @@
+get:
+  tags:
+    - Orders
+  summary: Get Redeem Code
+  description: Retrieve details of a gift card's redeem code after a successful transaction by making a request with the gift card's transaction identification number.
+  operationId: giftcards/get-a-redeem-code
+  parameters:
+    - in: path
+      name: transactionId
+      schema:
+        type: integer
+        description: Indicates the transaction identification number of the gift card's redeem code to be retrieved.
+        example: 2
+      required: true
+  responses:
+    '200':
+      description: Successfully retrieved details of a gift card's redeem code.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_a_redeem_code/GetARedeemCodeResponse200.yaml
+          example:
+            cardNumber: 6120200345149064
+            pinCode: 5821
+    '401':
+      description: Failed due to an unauthorized request.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_a_redeem_code/GetARedeemCodeResponse401.yaml
+          example:
+            timeStamp: 2022-02-14 21:14:00
+            message: Full authentication is required to access this resource
+            path: /orders/transactions/10/cards
+            errorCode: INVALID_TOKEN
+            infoLink: null
+            details: []
+    '404':
+      description: Failed because the request was made with an invalid transaction identification number.
+      content:
+        'application/com.reloadly.giftcards-v1+json':
+          schema:
+            $ref: ../components/schemas/giftcards/get_a_redeem_code/GetARedeemCodeResponse404.yaml
+          example:
+            timeStamp: 2021-08-11 11:54:00
+            message: Invalid transaction id
+            path: /orders/transactions/101/cards
+            errorCode: null
+            infoLink: null
+            details: []
