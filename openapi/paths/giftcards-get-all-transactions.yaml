@@ -6,6 +6,18 @@ get:
   operationId: giftcards/get-all-transactions
   parameters:
     - in: query
+      name: size
+      schema: 
+        type: integer
+        description: This indicates the number of transactions to be retrieved on a page.
+        example: 10
+    - in: query
+      name: page
+      schema: 
+        type: integer
+        description: This indicates the page of the transactions list being retrieved.
+        example: 1
+    - in: query
       name: startDate
       schema:
         type: string

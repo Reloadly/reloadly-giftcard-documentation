@@ -9,13 +9,13 @@ get:
       name: size
       schema:
         type: integer
-        description: Indicates the number of gift card products offering discounts to be retrieved on a page. Default value is 200.
+        description: Indicates the number of gift card products offering discounts to be retrieved on a page.
         example: 50
     - in: query
       name: page
       schema:
         type: integer
-        description: Indicates the page of the list of gift card products offering discounts. Default value is 1.
+        description: Indicates the page of the list of gift card products offering discounts.
         example: 2
   responses:
     '200':
