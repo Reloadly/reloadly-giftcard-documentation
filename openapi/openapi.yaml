@@ -13,6 +13,8 @@ info:
 tags:
   - name: Authentication
     description: Reloadly uses access tokens ( or bearer tokens ) to authenticate requests and grant access to our APIs. Access tokens differ across our various products. This means that you can only use an access token generated for the Gift Card service on the Gift Card API, the same goes for other products. <br><br> Also, Reloadly has two operating environments - **Production** which allows you work with live credentials while building real world applications and **Sandbox** which helps you access our APIs in test mode and simulate real-like scenarios. Below is a table that shows the server URL for Reloadly's Gift Card products. <br><br> <table><thead><tr><th>Product</th><th>Environment</th><th>Service URL</th></tr></thead><tbody><tr><td>Giftcards</td><td>Production</td><td>https://giftcards.reloadly.com</td></tr><tr><td></td><td>Sandbox</td><td>https://giftcards-sandbox.reloadly.com</td></tr></tbody></table> <br><br> To get an access token, first obtain your **client id** and **client secret** from the <a href="https://www.reloadly.com/">Reloadly dashboard</a>. Then make a **POST** request with the payload format provided in the code sample section.    
+  - name: Account Balance
+    description: The **Balance** feature lets you view the details of your account balance in real time while using the gift card product. Informaton provided by the **Balance** feature includes an account's balance, the currency name and denomination fo the account, and the last time funds were used from the account.
   - name: Products
     description: The data on **Products** provides useful insight into the gift card products that can be purchased via Reloadly's platform. Using the **Products** feature, you can access details of over 200 gift card products and make purchases as well. <br> <br> Some of the information included in the product's details are the product's name, denomination type, discount rate,  fixed amounts where applicable, country's details, and brand details attached to the product. The FX rate the gift card is purchased at is calculated against the currency of the account making the purchase.    
   - name: Redeem Instructions
@@ -43,7 +45,14 @@ paths:
     $ref: 
         paths/access-token.yaml
     servers:
-      - url: https://auth.reloadly.com       
+      - url: https://auth.reloadly.com  
+  /accounts/balance:
+    $ref: paths/giftcards-accounts-balance.yaml
+    servers:
+      - url: https://giftcards.reloadly.com
+        description: Production
+      - url: https://giftcards-sandbox.reloadly.com
+        description: Sandbox     
   /products:
     $ref: paths/giftcards-get-all-products.yaml
     servers:
